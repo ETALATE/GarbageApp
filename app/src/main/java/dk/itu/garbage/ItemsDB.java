@@ -16,19 +16,12 @@ public class ItemsDB extends ViewModel {
     private static ItemsDB sItemsDB;
     private final Map<String, String> itemsMap = new HashMap<>();
 
-    //declaring access modifier of constructor private
-    private ItemsDB(Context context) {
+    //declaring access modifier of constructor private /changed to use context with AndroidViewModel
+    protected ItemsDB(Context context) {
         fillItemsDB(context, "garbage.txt");
     }
 
-    public ItemsDB() {
 
-    }
-
-
-    public static void initialize(Context context) {
-        if (sItemsDB == null) sItemsDB = new ItemsDB(context);
-    }
 
     public static ItemsDB get() {
         if (sItemsDB == null) {
@@ -100,7 +93,7 @@ public class ItemsDB extends ViewModel {
     public String listItems() {
         String dbItems = "";
         for (Map.Entry item : itemsMap.entrySet()) {
-            dbItems = dbItems + "\n" + item.getKey() + " should be placed in: " + item.getValue();
+            dbItems = dbItems + item.getKey() + " should be placed in: " + item.getValue() + "\n";
         }
         return dbItems;
     }

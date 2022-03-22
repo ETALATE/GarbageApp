@@ -1,17 +1,21 @@
 package dk.itu.garbage;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ItemsViewModel extends ViewModel {
+public class ItemsViewModel extends AndroidViewModel {
     // only used by this class, only one can exist (belongs to the class)
     private static MutableLiveData<ItemsDB> items;
 
-   public ItemsViewModel() {
+   public ItemsViewModel(Application application) {
+       super(application);
        // items initialized at instantiation
        items = new MutableLiveData<>();
        // and value set (using the public constructor)
-       items.setValue(new ItemsDB());
+       items.setValue(new ItemsDB(application));
    }
 
    public MutableLiveData<ItemsDB> getValue() {

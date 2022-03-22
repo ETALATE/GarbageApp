@@ -15,35 +15,36 @@ import android.widget.TextView;
 
 
 public class ListFragment extends Fragment {
-    //private static ItemsDB itemsDB;
-    private TextView listGarbage;
+    private TextView listOfGarbage;
     private Button backButton; // to show when in portrait mode
+
+    //db
+    ItemsViewModel itemDB;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //itemsDB = ItemsDB.get();
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_list, container, false);
-        listGarbage = v.findViewById(R.id.list_item);
+        listOfGarbage = v.findViewById(R.id.list_items);
         backButton = v.findViewById((R.id.back_button));
 
-        ItemsViewModel itemsDB= new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
-        itemsDB.getValue().observe(getViewLifecycleOwner(), items -> listGarbage.setText(items.listItems()));
+        itemDB = new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
+        itemDB.getValue().observe(getViewLifecycleOwner(), items -> listOfGarbage.setText(items.listItems()));
+
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             backButton.setOnClickListener(view ->
-                    getActivity()
-                            .getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.container_ui,
-                                    new UIFragment()).commit());
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container_ui,
+                                new UIFragment()).commit());
         }
-
         return v;
     }
 }

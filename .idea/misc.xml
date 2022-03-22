@@ -5,15 +5,21 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="app/src/main/res/layout-land/garbage.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-land/fragment_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-land/fragment_u_i.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-land/fragment_ui.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/garbage.xml" value="0.335" />
+        <entry key="app/src/main/res/layout-port/fragment_list.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout-port/fragment_ui.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_adding.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.11354166666666667" />
         <entry key="app/src/main/res/layout/fragment_adding_activity.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_items_d_b.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_kotlin.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_u_i.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/garbage.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_u_i.xml" value="0.1008083405857532" />
+        <entry key="app/src/main/res/layout/garbage.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/shoppingmain.xml" value="0.20425724637681159" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14375" />
       </map>
     </option>

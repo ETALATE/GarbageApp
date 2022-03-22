@@ -19,12 +19,11 @@ import android.widget.Toast;
 
 public class UIFragment extends Fragment {
 
-    //Button for add item
-    private Button searchItems, addItem, delItem;
+    //GUI
+    private Button searchItems, addItem, delItem, listGarbage;
     private EditText item, inputWhat, inputWhere;
-    //also in ListFragment
-    private TextView listGarbage;
 
+    //db
     private ItemsViewModel itemDB;
 
 
@@ -35,13 +34,11 @@ public class UIFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_u_i, container, false);
 
-
-        //GUI
 
         //for the searchItem button
         item = v.findViewById(R.id.search_text);
@@ -51,6 +48,7 @@ public class UIFragment extends Fragment {
         //and button for adding
         addItem = v.findViewById(R.id.add_button);
         delItem = v.findViewById(R.id.delete_item_button);
+        listGarbage= v.findViewById(R.id.list_button);
 
 
 
@@ -67,8 +65,8 @@ public class UIFragment extends Fragment {
         // if phone is in portrait mode
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             listGarbage.setOnClickListener(view ->
-                    getActivity().
-                            getSupportFragmentManager()
+                    getActivity()
+                            .getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.container_ui,
                                 new ListFragment()).commit());
@@ -86,7 +84,7 @@ public class UIFragment extends Fragment {
             } else Toast.makeText(getActivity(), R.string.empty_toast, Toast.LENGTH_LONG).show();
         });
 
-        //deleting a thing
+        //delete an item
         delItem.setOnClickListener(view -> {
             if (!inputWhat.getText().toString().trim().isEmpty()) {
                 itemDB.removeItem(inputWhat.getText().toString());

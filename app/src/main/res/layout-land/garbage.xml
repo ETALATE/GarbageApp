@@ -5,13 +5,13 @@
     android:orientation="horizontal">
 
     <FrameLayout
-        android:id="@+id/container_ui"
+        android:id="@+id/container_ui_land"
         android:layout_width="399dp"
         android:layout_height="match_parent" />
 
     <FrameLayout
         android:id="@+id/container_list"
-        android:layout_width="399dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 </LinearLayout>
