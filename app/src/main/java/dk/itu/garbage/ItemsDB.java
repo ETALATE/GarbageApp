@@ -8,13 +8,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 //now using ViewModel
 public class ItemsDB extends ViewModel {
     //a static factory method with the return type as an object of this singleton class
     private static ItemsDB sItemsDB;
-    private final Map<String, String> itemsMap = new HashMap<>();
+    private final Map<String, String> itemsMap = new LinkedHashMap<>();
 
     //declaring access modifier of constructor private /changed to use context with AndroidViewModel
     protected ItemsDB(Context context) {
