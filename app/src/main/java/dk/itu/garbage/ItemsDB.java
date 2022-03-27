@@ -17,18 +17,12 @@ public class ItemsDB extends ViewModel {
     private final Map<String, String> itemsMap = new LinkedHashMap<>();
 
 
-    public ItemsDB() {
-
-    }
+    public ItemsDB() {}
 
     public void initialize(Context context) {
         fillItemsDB(context, "garbage.txt");
     }
 
-
-    public Map<String, String> getItemsDBMap() {
-        return itemsMap;
-    }
 
     // takes input from TextEdit and searches Item object for equality
     //see also ItemsModelView
@@ -46,7 +40,7 @@ public class ItemsDB extends ViewModel {
         for (String i : itemsMap.keySet()) {
             if (delItem.equals(i)) {
                 itemsMap.remove(i);
-                break; //necessary?
+                break;
             }
         }
     }
@@ -82,14 +76,6 @@ public class ItemsDB extends ViewModel {
         } catch (IOException e) {
             System.out.println(e);
         }
-    }
-
-    public String listItems() {
-        String dbItems = "";
-        for (Map.Entry item : itemsMap.entrySet()) {
-            dbItems = dbItems + item.getKey() + " should be placed in: " + item.getValue() + "\n";
-        }
-        return dbItems;
     }
 
     //Turning map to list of String items
