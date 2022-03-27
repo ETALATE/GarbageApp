@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 
 public class UIFragment extends Fragment {
-
     //GUI
     private Button searchItems, addItem, delItem, listGarbage;
     private EditText item, inputWhat, inputWhere;
@@ -26,15 +25,13 @@ public class UIFragment extends Fragment {
     //db
     private ItemsViewModel itemDB;
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_u_i, container, false);
@@ -48,19 +45,12 @@ public class UIFragment extends Fragment {
         //and button for adding
         addItem = v.findViewById(R.id.add_button);
         delItem = v.findViewById(R.id.delete_item_button);
-        listGarbage= v.findViewById(R.id.list_button);
-
-
-
-        //adding searchItems to ItemsViewModel makes it possible to use searchItems method of ItemsDB
-        searchItems = v.findViewById(R.id.search_button);
-        searchItems.setOnClickListener((View searchBtn) ->
-                item.setText(itemDB.searchItems(item.getText().toString()))
-        );
+        listGarbage = v.findViewById(R.id.list_button);
 
 
         //assign itemDB the shared data (ItemsViewModel)
         itemDB = new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
+        itemDB.initialize(getActivity());
 
         // if phone is in portrait mode
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -71,6 +61,13 @@ public class UIFragment extends Fragment {
                             .replace(R.id.container_ui,
                                 new ListFragment()).commit());
         }
+
+        //adding searchItems to ItemsViewModel makes it possible to use searchItems method of ItemsDB
+        searchItems = v.findViewById(R.id.search_button);
+        searchItems.setOnClickListener( searchBtn ->
+                item.setText(itemDB.searchItems(item.getText().toString()))
+        );
+
 
         //add a new item
         addItem.setOnClickListener(view -> {

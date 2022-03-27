@@ -26,6 +26,8 @@ public class GarbageActivity extends AppCompatActivity {
         fm = getSupportFragmentManager();
         setUpFragments();
 
+        //initialising db with context
+        //itemDB.initialize(GarbageActivity.this);
     }
 
     private void setUpFragments() {

@@ -7,38 +7,31 @@ import androidx.lifecycle.ViewModel;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 //now using ViewModel
 public class ItemsDB extends ViewModel {
-    //a static factory method with the return type as an object of this singleton class
-    private static ItemsDB sItemsDB;
     private final Map<String, String> itemsMap = new LinkedHashMap<>();
 
-    //declaring access modifier of constructor private /changed to use context with AndroidViewModel
-    protected ItemsDB(Context context) {
+
+    public ItemsDB() {
+
+    }
+
+    public void initialize(Context context) {
         fillItemsDB(context, "garbage.txt");
     }
 
-
-
-    public static ItemsDB get() {
-        if (sItemsDB == null) {
-            throw new IllegalStateException("ItemsDB must be initialized");
-        }
-        return sItemsDB;
-    }
-
-    //other methods: getWhere
 
     public Map<String, String> getItemsDBMap() {
         return itemsMap;
     }
 
-
     // takes input from TextEdit and searches Item object for equality
+    //see also ItemsModelView
     public String searchItems(String input) {
         String dbItem;
         if (itemsMap.containsKey(input.toLowerCase().trim())) {
@@ -97,6 +90,15 @@ public class ItemsDB extends ViewModel {
             dbItems = dbItems + item.getKey() + " should be placed in: " + item.getValue() + "\n";
         }
         return dbItems;
+    }
+
+    //Turning map to list of String items
+    public List<String> getAsList() {
+        List<String> listFromMap = new ArrayList<>();
+        for (Map.Entry item : itemsMap.entrySet()) {
+            listFromMap.add(item.getKey() + " should be placed in: " + item.getValue());
+        }
+        return listFromMap;
     }
 
 }
