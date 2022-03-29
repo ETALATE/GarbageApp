@@ -9,14 +9,15 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-public class ItemsViewModel extends ViewModel {
+public class ItemsViewModel extends AndroidViewModel {
     // only used by this class, only one can exist (belongs to the class)
     private static MutableLiveData<ItemsDB> items;
 
-   public ItemsViewModel() {
+   public ItemsViewModel(Application application) {
+       super(application);
        // items initialized at instantiation
        items = new MutableLiveData<>();
-       items.setValue(new ItemsDB());
+       items.setValue(new ItemsDB(application));
    }
 
    public MutableLiveData<ItemsDB> getValue() {
@@ -48,14 +49,13 @@ public class ItemsViewModel extends ViewModel {
    }
 
    //To initialize db onCreate in activity - fix around not passing context to constructor of ViewModel
-   public ItemsDB initialize(Context context) {
-       ItemsDB temp = items.getValue();
-       //dbs initialize method uses context passed
-       temp.initialize(context);
-       //the value of items is set with the context
-       items.setValue(temp);
-       return temp;
+   /*
+    public ItemsDB initialize(Context context) {
+       ItemsDB.initialize(context);
+       items.setValue(ItemsDB.get());
+       return items.getValue();
    }
+   */
 
    public List<String> getAsList() {
        ItemsDB temp = items.getValue();

@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 public class ListFragment extends Fragment {
     private Button backButton; // to show when in portrait mode
-
     //db
     ItemsViewModel itemDB;
 
@@ -33,7 +32,7 @@ public class ListFragment extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_list, container, false);
         backButton = v.findViewById((R.id.back_button));
         itemDB = new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
-        itemDB.initialize(getActivity());
+        System.out.println("Reloading itemsDB in ListFragment");
 
         // RecyclerView setup
         RecyclerView itemList = v.findViewById(R.id.list_items);

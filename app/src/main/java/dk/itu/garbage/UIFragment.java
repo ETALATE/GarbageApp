@@ -50,7 +50,7 @@ public class UIFragment extends Fragment {
 
         //assign itemDB the shared data (ItemsViewModel)
         itemDB = new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
-        itemDB.initialize(getActivity());
+        System.out.println("reloading ItemsDB in UIFragment.java");
 
         // if phone is in portrait mode
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {

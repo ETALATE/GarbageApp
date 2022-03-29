@@ -16,12 +16,9 @@ import java.util.Map;
 public class ItemsDB extends ViewModel {
     private final Map<String, String> itemsMap = new LinkedHashMap<>();
 
-    public ItemsDB() {}
-
-    public void initialize(Context context) {
+    public ItemsDB(Context context) {
         fillItemsDB(context, "garbage.txt");
     }
-
 
     // takes input from TextEdit and searches Item object for equality
     //see also ItemsModelView
