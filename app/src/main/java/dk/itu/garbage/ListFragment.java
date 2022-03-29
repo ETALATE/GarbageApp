@@ -74,7 +74,9 @@ public class ListFragment extends Fragment {
         public void onClick(View v) {
             //https://stackoverflow.com/questions/5754887/accessing-view-inside-the-linearlayout-with-code
             String item = (String) ((TextView) v.findViewById(R.id.what_where_item)).getText();
-            itemDB.removeItem(item);
+            //itemDB.removeItem(item);
+            itemDB.getAsList().remove(item);
+
         }
     }
 

@@ -36,6 +36,7 @@ public class ItemsDB extends ViewModel {
     }
 
     //see also ItemsModelView
+
     public void removeItem(String delItem) {
         for (String i : itemsMap.keySet()) {
             if (delItem.equals(i)) {
@@ -44,6 +45,7 @@ public class ItemsDB extends ViewModel {
             }
         }
     }
+
 
     public int getSize() {
         return itemsMap.size();
