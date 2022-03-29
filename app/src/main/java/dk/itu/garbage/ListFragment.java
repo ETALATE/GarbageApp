@@ -33,7 +33,7 @@ public class ListFragment extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_list, container, false);
         backButton = v.findViewById((R.id.back_button));
         itemDB = new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
-
+        itemDB.initialize(getActivity());
 
         // RecyclerView setup
         RecyclerView itemList = v.findViewById(R.id.list_items);
@@ -74,8 +74,8 @@ public class ListFragment extends Fragment {
         public void onClick(View v) {
             //https://stackoverflow.com/questions/5754887/accessing-view-inside-the-linearlayout-with-code
             String item = (String) ((TextView) v.findViewById(R.id.what_where_item)).getText();
-            //itemDB.removeItem(item);
-            itemDB.getAsList().remove(item);
+            //System.out.println(item);
+            itemDB.removeItemFromList(item);
 
         }
     }

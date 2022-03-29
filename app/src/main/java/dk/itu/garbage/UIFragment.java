@@ -60,6 +60,7 @@ public class UIFragment extends Fragment {
                             .beginTransaction()
                             .replace(R.id.container_ui,
                                 new ListFragment()).commit());
+            System.out.println("💥" + itemDB.size());
         }
 
         //adding searchItems to ItemsViewModel makes it possible to use searchItems method of ItemsDB
