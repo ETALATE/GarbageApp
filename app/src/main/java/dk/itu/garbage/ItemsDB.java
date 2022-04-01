@@ -53,7 +53,6 @@ public class ItemsDB extends ViewModel {
                 // break out of loop
                 break;
             }
-            System.out.println("💥");
         }
         //remove the item when found
         itemsMap.remove(delItem);
