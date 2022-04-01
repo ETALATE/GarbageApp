@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class ListFragment extends Fragment {
@@ -75,6 +76,7 @@ public class ListFragment extends Fragment {
             String item = (String) ((TextView) v.findViewById(R.id.what_where_item)).getText();
             //System.out.println(item);
             itemDB.removeItemFromList(item);
+            Toast.makeText(getActivity(), getString(R.string.removed) + " " + item, Toast.LENGTH_SHORT).show();
 
         }
     }

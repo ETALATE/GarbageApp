@@ -6,7 +6,7 @@
 
     <FrameLayout
         android:id="@+id/container_ui_land"
-        android:layout_width="399dp"
+        android:layout_width="400dp"
         android:layout_height="match_parent" />
 
     <FrameLayout

@@ -5,7 +5,8 @@
     <string name="search_text_button">Search</string>
     <string name="add_text_button">Add Item</string>
     <string name="del_text_button">Delete Item</string>
-    <string name="removed">removed</string>
+    <string name="removed">Removed</string>
+    <string name="not_removed">Nothing has been removed. Insert item in what field.</string>
     <string name="back">Back</string>
     <string name="empty_toast">One must add both and item and where to sort it.</string>
     <!-- TODO: Remove or change this placeholder text -->
