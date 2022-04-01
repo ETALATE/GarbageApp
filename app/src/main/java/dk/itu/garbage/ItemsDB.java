@@ -43,14 +43,20 @@ public class ItemsDB extends ViewModel {
 
     //remove item from list method taking in the whole sentence from wherewhatitem (both what and where)
     public void removeItemFromList(String delWhatWhere) {
+        String delItem = "";
         // go though each key (what) in a map
         for (String what : itemsMap.keySet()) {
             // searchItem returns the kombi of the what and where, and if that is equal to the given argument
             if (searchItems(what).equals(delWhatWhere)) {
-                //remove this item from the map
-                itemsMap.remove(what);
+                //assign delItem
+                delItem = what;
+                // break out of loop
+                break;
             }
+            System.out.println("💥");
         }
+        //remove the item when found
+        itemsMap.remove(delItem);
 
     }
 
