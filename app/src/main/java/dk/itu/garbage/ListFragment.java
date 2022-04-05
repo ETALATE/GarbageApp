@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +18,7 @@ import android.widget.Toast;
 
 
 public class ListFragment extends Fragment {
-    private Button backButton; // to show when in portrait mode
+    //private Button backButton; // using lower back button instead of UI
     //db
     ItemsViewModel itemDB;
 
@@ -31,7 +32,7 @@ public class ListFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_list, container, false);
-        backButton = v.findViewById((R.id.back_button));
+        //backButton = v.findViewById((R.id.back_button));
         itemDB = new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
         System.out.println("Reloading itemsDB in ListFragment");
 
@@ -43,14 +44,6 @@ public class ListFragment extends Fragment {
 
         itemDB.getValue().observe(getActivity(), itemDB -> mAdapter.notifyDataSetChanged());
 
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            backButton.setOnClickListener(view ->
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container_ui,
-                                new UIFragment()).commit());
-        }
         return v;
 
     }

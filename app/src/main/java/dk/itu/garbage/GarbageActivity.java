@@ -24,6 +24,7 @@ public class GarbageActivity extends AppCompatActivity {
         setUpFragments();
     }
 
+    // for navigation, only landscape is handled
     private void setUpFragments() {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             fragmentUI = fm.findFragmentById(R.id.container_ui_land);
@@ -34,14 +35,6 @@ public class GarbageActivity extends AppCompatActivity {
                 fm.beginTransaction()
                         .add(R.id.container_ui_land, fragmentUI)
                         .add(R.id.container_list, fragmentList)
-                        .commit();
-            }
-        } else {
-            // for portrait, only show UI
-            if (fragmentUI == null) {
-                fragmentUI = new UIFragment();
-                fm.beginTransaction()
-                        .add(R.id.container_ui, fragmentUI)
                         .commit();
             }
         }

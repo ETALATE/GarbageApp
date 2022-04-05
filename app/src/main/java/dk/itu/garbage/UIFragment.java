@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,16 +51,17 @@ public class UIFragment extends Fragment {
 
         //assign itemDB the shared data (ItemsViewModel)
         itemDB = new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
-        System.out.println("reloading ItemsDB in UIFragment.java");
 
         // if phone is in portrait mode
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            listGarbage = v.findViewById(R.id.list_button);
             listGarbage.setOnClickListener(view ->
-                    getActivity()
+ /*                   getActivity()
                             .getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.container_ui,
-                                new ListFragment()).commit());
+                                new ListFragment()).commit());*/
+                    Navigation.findNavController(view).navigate(R.id.action_UIFragment_to_listFragment));
         }
 
         //adding searchItems to ItemsViewModel makes it possible to use searchItems method of ItemsDB
